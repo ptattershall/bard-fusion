@@ -13,7 +13,6 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Loader2 } from 'lucide-react'
 import Link from 'next/link'
 import { registerUser, checkUsernameUnique } from './actions'
-import ResponsiveLogo from '@/components/responsive-logo/responsive-logo'
 import BannerLogo from '@/components/responsive-logo/banner-logo'
 
 const schema = z.object({
