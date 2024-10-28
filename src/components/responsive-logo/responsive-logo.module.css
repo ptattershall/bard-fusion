@@ -1,0 +1,22 @@
+.logoContainer {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon {
+    display: block;
+  }
+  
+  .logo {
+    display: none;
+  }
+  
+  @media (min-width: 1280px) {
+    .icon {
+      display: none;
+    }
+  
+    .logo {
+      display: block;
+    }
+}

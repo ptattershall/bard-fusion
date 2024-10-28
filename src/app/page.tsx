@@ -1,101 +1,97 @@
-import Image from "next/image";
+import Image from 'next/image'
+import { Button } from "@/components/ui/button"
+import RegisterButton from '@/components/register-button'
 
-export default function Home() {
+import { landingMetadata } from './metadata'
+
+export const metadata = landingMetadata;
+
+export default function LandingPage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main className="flex-grow">
+      <section className="bg-gradient-to-tr from-secondary to-primary py-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
+            <div className="md:w-1/2 mb-10 md:mb-0">
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">Where Creativity and Technology Fuse!</h1>
+              <p className="text-xl mb-6">Empower your creative journey with BardFusion - the ultimate platform for independent creators and small business owners in storytelling industries.</p>
+              <RegisterButton text="Get Started" />
+            </div>
+            <div className="md:w-1/2">
+              <Image src="/bf_image.png" alt="BardFusion Creators" width={600} height={400} className="rounded-lg shadow-lg" />
+            </div>
+          </div>
+        </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+        <section id="features" className="py-20 bg-accent">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-center mb-12">Unleash Your Creative Potential</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                { title: "Connect", description: "Network with like-minded creators across various disciplines." },
+                { title: "Collaborate", description: "Find the perfect partners for your next big project." },
+                { title: "Create", description: "Access tools and resources to bring your vision to life." },
+                { title: "Share", description: "Showcase your work and upcoming events to a supportive community." },
+                { title: "Grow", description: "Learn from others and expand your creative horizons." },
+                { title: "Monetize", description: "Turn your passion into a sustainable business." }
+              ].map((feature, index) => (
+                <div key={index} className="bg-card p-6 rounded-lg shadow-md">
+                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                  <p className="text-accent-foreground">{feature.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="creators" className="py-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-center mb-12">Join Our Creative Community</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {[
+                "Animators", "Comic Artists", "Writers", "Filmmakers", "Fashion Designers", "Musicians", "Illustrators", "Game Developers"
+              ].map((creator, index) => (
+                <div key={index} className="text-center">
+                  <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-400 to-purple-500 rounded-full mb-4 flex items-center justify-center">
+                    <span className="text-white text-4xl">{creator[0]}</span>
+                  </div>
+                  <p className="font-medium">{creator}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="pricing" className="py-20 bg-accent">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-center mb-12">Choose Your Creative Journey</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                { name: "Starter", price: "$9.99", features: ["Basic networking", "Project sharing", "Community access"] },
+                { name: "Pro", price: "$19.99", features: ["Advanced networking", "Collaboration tools", "Priority support", "Analytics dashboard"] },
+                { name: "Enterprise", price: "Custom", features: ["Full platform access", "Dedicated account manager", "Custom integrations", "Team management"] }
+              ].map((plan, index) => (
+                <div key={index} className="bg-card p-8 rounded-lg shadow-md text-center">
+                  <h3 className="text-2xl font-bold mb-4">{plan.name}</h3>
+                  <p className="text-4xl font-bold mb-6">{plan.price}<span className="text-sm font-normal">/month</span></p>
+                  <ul className="mb-8 space-y-2">
+                    {plan.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="text-accent-foreground">{feature}</li>
+                    ))}
+                  </ul>
+                  <Button variant={index === 1 ? "default" : "outline"} className="w-full">Choose Plan</Button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-accent/80 text-gray-900 dark:text-gray-100 py-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl font-bold mb-4">Ready to Fuse Your Creativity?</h2>
+            <p className="text-xl mb-8">Join BardFusion today and connect with a world of creative possibilities.</p>
+            <Button size="lg" variant="secondary">Start Your Free Trial</Button>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+  )
 }
